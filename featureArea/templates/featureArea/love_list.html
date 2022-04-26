@@ -1,0 +1,18 @@
+{% extends  "login/index.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>爱意清单</title>
+    {% block self_css %}
+        <link rel="stylesheet" href="{% static 'featureArea/css/love_list.css' %}">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+爱意清单页面
+{% endblock %}
+
+</body>
+</html>

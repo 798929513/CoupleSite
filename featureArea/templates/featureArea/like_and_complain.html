@@ -1,0 +1,17 @@
+{% extends  "login/index.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% block self_css %}
+        <link rel="stylesheet" href="{% static 'featureArea/css/like_and_complain.css' %}">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+吐槽牢骚页面
+{% endblock %}
+</body>
+</html>

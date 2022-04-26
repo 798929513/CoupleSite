@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="{% static 'login/css/loginAndRegister.css' %}">
+    <title>loginAndRegister</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <!--注册-->
+            <form action="/loginAndRegister/" method="post">
+                {% csrf_token %}
+                <div class="register-box hidden">
+                    <h1>register</h1>
+                    {{ register_form.username_register }}
+                    {{ register_form.email }}
+                    {{ register_form.password_register }}
+                    {{ register_form.confirm_pass }}
+                    <button type="submit" name="register">注册</button>
+                </div>
+            </form>
+
+            <!--登录-->
+            <form action="/loginAndRegister/" method="post">
+                {% csrf_token %}
+                <div class="login-box">
+                    <h1>login</h1>
+                    {{ login_form.username_login }}
+                    {{ login_form.password_login }}
+                    <button type="submit" name="login">登录</button>
+                </div>
+            </form>
+
+        </div>
+         <div class="con-box left">
+            <h2>欢迎来到</h2>
+            <h2>我们的<span>爱情空间</span></h2>
+             <p>开启我们的<span>爱情之旅</span></p>
+            <img src="{% static 'login/image/男.jpg' %}" alt="">
+            <p>已有账号</p>
+            <button id="login">去登陆</button>
+         </div>
+        <div class="con-box right">
+            <h2>欢迎来到</h2>
+            <h2>我们的<span>爱情空间</span></h2>
+            <p>开始我们的<span>爱情之旅</span></p>
+            <img src="{% static 'login/image/女.jpg' %}" alt="">
+            <p>没有账号？</p>
+            <button id="register">去注册</button>
+        </div>
+    </div>
+ <script>
+    {% if message %}
+        alert('{{message}}');
+    {% endif %}
+</script>
+<script>
+    let login = document.getElementById('login');
+    let register = document.getElementById('register');
+    let form_box = document.getElementsByClassName('form-box')[0];
+    let register_box = document.getElementsByClassName('register-box')[0];
+    let login_box = document.getElementsByClassName('login-box')[0];
+
+    register.addEventListener('click', ()=>{
+        form_box.style.transform = 'translateX(80%)';
+        login_box.classList.add('hidden');
+        register_box.classList.remove('hidden');
+
+    })
+
+    login.addEventListener('click', ()=>{
+        form_box.style.transform = 'translateX(0%)';
+        register_box.classList.add('hidden');
+        login_box.classList.remove('hidden');
+
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清扬婉兮</title>
+    <link rel="preload" href="//at.alicdn.com/t/font_3313910_v9b3upfj23p.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_3313910_h57ek633bej.css">
+    <link rel="stylesheet" href="{% static 'login/css/base.css' %}">
+    {% block self_css %}
+        <link rel="stylesheet" href="{% static 'login/css/index.css' %}">
+    {% endblock %}
+    <link rel="icon" type="image" href="https://typora-pictures1.oss-cn-beijing.aliyuncs.com/zmlhjf/%E5%83%8F%E7%B4%A0%E9%A3%8E/%E5%B0%91%E5%A5%B3.jpg">
+</head>
+<body>
+    <div class="header">
+        <div class="header-text">
+            <div class="header-left-text">
+                <span class="iconfont icon-ai"></span>
+                <a href="{% url "login:index" %}">有美一人，清扬婉兮</a>
+                <span class="iconfont icon-ai"></span>
+            </div>
+            <div class="header-right-text">
+                <span class="iconfont icon-aixin"></span>
+                <span class="header-right-text"><a href="{% url "login:logout" %}">只缘感君一回顾，使我思君朝与暮</a></span>
+            </div>
+        </div>
+
+        <section class="lover-background">
+        </section>
+
+        <div class="avater-lover">
+            <div class="avater-lover-content">
+                <div>
+                    <img src="http://42.192.10.118/static/login/image/%E7%94%B7.jpg" alt="男生头像" class="avater avater-boy">
+                    <p class="name boy">韩 加 帆</p>
+                </div>
+
+                <div>
+                    <div class="iconfont icon-xiangsu_aixin"></div>
+                </div>
+
+                <div>
+                    <img src="http://42.192.10.118/static/login/image/%E5%A5%B3.jpg" alt="女生头像" class="avater avater-girl">
+                    <p class="name girl">曾 孟 丽</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 有absolute，会脱离文档流，。不受grid控制 -->
+        <section class="main-hero-waves-area waves-area">
+            <svg class="waves-svg" xmlns="http://www.w3.org/2000/svg"   viewBox="0 24 140 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path>
+                </defs>
+                <g class="parallax">
+                    <use href="#gentle-wave" x="48" y="0"></use>
+                    <use href="#gentle-wave" x="48" y="3"></use>
+                    <use href="#gentle-wave" x="48" y="5"></use>
+                    <use href="#gentle-wave" x="48" y="7"></use>
+                </g>
+            </svg>
+        </section>
+    </div>
+
+{% block content %}
+    <div class="content">
+        <div class="time-content">
+            <p class="time-content-title">我们已经相依相伴走过了</p>
+            <p id="time-content-runtime"></p>
+        </div>
+
+        <div class="card-box">
+            <a href="{% url 'featureArea:things' %}" class="card-item">
+                <img src="https://www.nitutu.com/uploads/allimg/200317/11020612V-16.jpeg" alt="" class="card-img">
+                <div class="things">
+                    <p class="card-title">点点滴滴</p>
+                    <p class="card-content"><span class="iconfont icon-xiangsu_meiguihua"></span>记录我们的甜蜜生活</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card-box">
+            <a href="{% url 'featureArea:loveList' %}" class="card-item">
+                <img src="https://www.nitutu.com/uploads/allimg/200317/1102063114-17.jpeg" alt="" class="card-img">
+                <div class="lovelist">
+                    <p class="card-title">爱意清单</p>
+                    <p class="card-content"><span class="iconfont icon-xiangsu_qizhi"></span>写下我们一定要做的事</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="card-box">
+            <a href="{% url 'featureArea:likeAndComplain' %}" class="card-item">
+                <img src="https://www.nitutu.com/uploads/allimg/200317/1105502104-4.jpeg" alt="" class="card-img">
+                <div class="like-complain">
+                    <p class="card-title">吐槽牢骚</p>
+                    <p class="card-content"><span class="iconfont icon-xiangsu_caomei"></span>帮助彼此在爱情中成长</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+    <div class="footer">
+        <div class="footer-content">
+            <p>©<span class="iconfont icon-xiangsu_tangguo"></span>有美一人，清扬婉兮。邂逅相遇，适我愿兮<span class="iconfont icon-xiangsu_tangguo"></span></p>
+            <p>版权部份：像素图标来自<a href="https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.d9bd4f23f&uid=207078&nid=XqJypKOvb165">阿里云IconFont_ChenCJ</a></p>
+
+        </div>
+
+    </div>
+
+    <script>
+        window.showRunTime = function(){
+            runtime = document.getElementById("time-content-runtime");
+            if(!runtime){
+                return;
+            }
+            window.setTimeout("showRunTime()", 1000);
+            start = new Date("2018-06-01");
+            now = new Date();
+            T = (now.getTime() - start.getTime());
+            oneDay = 24 * 60 * 60 * 1000;
+            d = T / oneDay;
+            D = Math.floor(d);
+            h = (d - D) * 24;
+            H = Math.floor(h);
+            m = (h - H) * 60;
+            M = Math.floor(m);
+            s = (m - M) * 60;
+            S = Math.floor(s);
+            runtime.innerHTML = "<span class=\"runTimeWord\"> 第 </span> <span class=\"runTimeNum\">" + D + "</span> <span class=\"runTimeWord\"> 天 </span> <span class=\"runTimeNum\">" + H + "</span> <span class=\"runTimeWord\"> 时 </span> <span class=\"runTimeNum\">" + M + "</span> <span class=\"runTimeWord\"> 分 </span> <span class=\"runTimeNum\">" + S + "</span> <span class=\"runTimeWord\"> 秒 </span>";
+
+        }
+        showRunTime();
+    </script>
+
+</body>
+</html>
