@@ -12,7 +12,9 @@ class User(models.Model):
 
     name = models.CharField(max_length=128, unique=True, default='')
     password = models.CharField(max_length=128, default='')
-    lover = models.OneToOneField('self', on_delete=models.SET_NULL, blank=True, null=True, related_name="lover_is")
+    # 关系字段，与自己关联，lover也是用户，我想要关联名称，而名字正好是唯一的
+    lover = models.OneToOneField('self', on_delete=models.SET_NULL,
+                                 blank=True, null=True, related_name="lover_is", to_field="name")
     email = models.EmailField(default='')
     sex = models.CharField(max_length=32, choices=gender, default="女")
     create_time = models.DateTimeField(auto_now_add=True)

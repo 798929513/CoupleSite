@@ -17,7 +17,8 @@ class LikeAndComplain(models.Model):
         (5, "5"),
     )
 
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="like_and_complains", verbose_name="作者")
+    author = models.ForeignKey(User, to_field="name", on_delete=models.CASCADE
+                               , related_name="like_and_complains", verbose_name="作者")
     title = models.CharField(max_length=32, verbose_name="标题")
     content = models.CharField(max_length=128, verbose_name="内容")
     data_time = models.DateField(verbose_name="日期")
@@ -27,7 +28,7 @@ class LikeAndComplain(models.Model):
         return "{0}: {1}, {2}分".format(self.data_time, self.content, self.score)
 
     class Meta:
-        verbose_name = "喜乐与悲"
-        verbose_name_plural = "喜乐与悲"
+        verbose_name = "吐槽牢骚"
+        verbose_name_plural = "吐槽牢骚"
         ordering = ['-data_time']
 

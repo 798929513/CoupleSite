@@ -16,9 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from rest_framework.routers import DefaultRouter
+from login.views import LoginAndRegViewSet
+from featureArea.views import LikeAndComplainViewSet
+
+
+router = DefaultRouter()
+router.register(r'user', LoginAndRegViewSet)
+router.register(r'likeAndComplain', LikeAndComplainViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('login.urls')),
-    path('featureArea/', include('featureArea.urls')),
+
+    # 可视化接口
+    path('api-auth/', include('rest_framework.urls')),
+
+    # 登录的接口
+    path('', include(router.urls)),
+
 ]

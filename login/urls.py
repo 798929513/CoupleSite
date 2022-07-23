@@ -1,12 +1,13 @@
 from django.urls import path
-from login import views
+from login.views import LoginAndRegViewSet
+from rest_framework import  routers
 
-app_name = "login"
+# app_name = "login"
+#
+# # 参数为不使用尾部斜杠
+# router = routers.DefaultRouter(trailing_slash=False)
+# router.register(r"users", LoginAndRegViewSet)
+# urlpatterns = router.urls
 
-urlpatterns = [
-    path('', views.login_and_register, name="loginAndRegister"),
-    path('loginAndRegister/', views.login_and_register, name="loginAndRegister"),
-    path('index/', views.index, name="index"),
-    path('logout/', views.logout, name="logout"),
-]
+
 
